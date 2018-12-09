@@ -1,6 +1,5 @@
 'use strict';
 const path = require('path');
-const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
@@ -17,9 +16,7 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:3003',
-        pathRewrite: {
-          '^/api' : ''
-        },
+        pathRewrite: {'^/api' : ''},
         changeOrigin: true,
         secure: false
       }
@@ -34,9 +31,7 @@ module.exports = {
     chunkFilename: '[id].js',
     publicPath: '/'
   },
-  resolve: {
-    extensions: ['.js']
-  },
+  resolve: {extensions: ['.js']},
   module: {
     rules: [
       {
@@ -57,24 +52,9 @@ module.exports = {
           {loader: 'style-loader'},
           {
             loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
+            options: {importLoaders: 1}
           },
-          {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: () => [
-                autoprefixer({
-                  browsers: [
-                    "> 1%",
-                    "last 2 versions"
-                  ]
-                })
-              ]
-            }
-          }
+          {loader: 'postcss-loader'}
         ]
       },
       {
