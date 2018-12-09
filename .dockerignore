@@ -1,0 +1,13 @@
+Dockerfile
+docker-compose.yml
+
+node_modules
+npm-debug.log
+
+.git
+README.md
+
+postcss.config.js
+webpack.config.js
+
+/**/__tests__/
