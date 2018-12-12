@@ -31,7 +31,7 @@ module.exports = {
     chunkFilename: '[id].js',
     publicPath: '/'
   },
-  resolve: {extensions: ['.js']},
+  resolve: {extensions: ['.js', '.vue']},
   module: {
     rules: [
       {
@@ -59,7 +59,14 @@ module.exports = {
       },
       {
         test: /\.(ico|png|svg|jpe?g|gif)$/,
-        loader: 'url-loader'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]'
+            }
+          }
+        ]
       }
     ]
   },

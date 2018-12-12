@@ -1,37 +1,49 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import SignUpView from '../views/SignUpView.vue';
-import SignInView from '../views/SignInView.vue';
-import AccountSettingsView from '../views/AccountSettingsView.vue';
-import ProfileSettingsView from '../views/ProfileSettingsView.vue';
-import ProfileView from '../views/ProfileView.vue';
-import CreatePostView from '../views/CreatePostView.vue';
-import EditPostView from '../views/EditPostView.vue';
-import DeletePostView from '../views/DeletePostView.vue';
-import ThreadView from '../views/ThreadView.vue';
-import ForumView from '../views/ForumView.vue';
-import BoardView from '../views/BoardView.vue';
+import SignUp from '../views/SignUp.vue';
+import SignIn from '../views/SignIn.vue';
+
+import Settings from '../views/Settings.vue';
+
+import User from '../views/User.vue';
+import Users from '../views/Users.vue';
+
+import CreatePost from '../views/CreatePost.vue';
+import EditPost from '../views/EditPost.vue';
+import DeletePost from '../views/DeletePost.vue';
+
+import Thread from '../views/Thread.vue';
+import Forum from '../views/Forum.vue';
+import Board from '../views/Board.vue';
+
+import NotFound from '../views/NotFound.vue';
 
 Vue.use(Router);
 
-export function createRouter() {
-  return new Router({
-    mode: 'history',
-    fallback: false,
-    scrollBehavior: () => ({y: 0}),
-    routes: [
-      {path: '/signup', component: SignUpView},
-      {path: '/signin', component: SignInView},
-      {path: '/account-settings', component: AccountSettingsView},
-      {path: '/profile-settings', component: ProfileSettingsView},
-      {path: '/:username', compoent: ProfileView},
-      {path: '/create-post', component: CreatePostView},
-      {path: '/edit-post', component: EditPostView},
-      {path: '/delete-post', component: DeletePostView},
-      {path: '/:thread', component: ThreadView},
-      {path: '/:forum', component: ForumView},
-      {path: '/', component: BoardView}
-    ]
-  });
-};
+const router = new Router({
+  mode: 'history',
+  fallback: false,
+  scrollBehavior: () => ({y: 0}),
+  routes: [
+    {path: '/signup', component: SignUp},
+    {path: '/signin', component: SignIn},
+
+    {path: '/settings', component: Settings},
+
+    {path: '/users/:username', compoent: User},
+    {path: '/users', component: Users},
+
+    {path: '/create-post', component: CreatePost},
+    {path: '/edit-post', component: EditPost},
+    {path: '/delete-post', component: DeletePost},
+
+    {path: '/:thread', component: Thread},
+    {path: '/:forum', component: Forum},
+    {path: '/', component: Board},
+
+    {path: '*', component: NotFound}
+  ]
+});
+
+export default router;
